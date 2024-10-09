@@ -46,17 +46,19 @@ func NewGatewayService(user_Service user_Service.UserServiceClient, wallet_Servi
 
 func (g *gatewayService) CreateUser(ctx context.Context, user *entity.User) (entity.User, error) {
 	req := &user_Service.CreateUserRequest{
-		Name:  user.Name,
-		Email: user.Email,
+		Name:    user.Name,
+		Email:   user.Email,
+		Address: user.Address,
 	}
 	res, err := g.userService.CreateUser(ctx, req)
 	if err != nil {
 		return entity.User{}, fmt.Errorf("failed to call CreateUser on user service: %v", err)
 	}
 	return entity.User{
-		ID:    int(res.Id),
-		Name:  res.Name,
-		Email: res.Email,
+		ID:      int(res.Id),
+		Name:    res.Name,
+		Email:   res.Email,
+		Address: res.Address,
 	}, nil
 }
 
@@ -67,9 +69,10 @@ func (g *gatewayService) GetUserByID(ctx context.Context, id int) (entity.User, 
 		return entity.User{}, fmt.Errorf("failed to get user by ID: %v", err)
 	}
 	return entity.User{
-		ID:    int(res.User.Id),
-		Name:  res.User.Name,
-		Email: res.User.Email,
+		ID:      int(res.User.Id),
+		Name:    res.User.Name,
+		Email:   res.User.Email,
+		Address: res.User.Address,
 	}, nil
 }
 
@@ -86,9 +89,10 @@ func (g *gatewayService) UpdateUser(ctx context.Context, id int, user entity.Use
 	}
 
 	return entity.User{
-		ID:    int(updatedUser.Id),
-		Name:  updatedUser.Name,
-		Email: updatedUser.Email,
+		ID:      int(updatedUser.Id),
+		Name:    updatedUser.Name,
+		Email:   updatedUser.Email,
+		Address: updatedUser.Address,
 	}, nil
 }
 
