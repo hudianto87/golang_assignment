@@ -8,8 +8,8 @@ package proto.wallet_service.v1;
 
 service TransactionService{    
     rpc CreateTransaction(CreateTransactionRequest) returns (Transaction);
-    rpc GetTransactionByID(GetTransactionByIDRequest) returns (GetTransactoinByIDResponse);
-    rpc GetTransactionByWalletID(GetTransactionByWalletIDRequest) returns (GetTransactoinByWalletIDResponse);
+    rpc GetTransactionByID(GetTransactionByIDRequest) returns (GetTransactionByIDResponse);
+    rpc GetTransactionByWalletID(GetTransactionByWalletIDRequest) returns (GetTransactionByWalletIDResponse);
     rpc DeleteTransaction(DeleteTransactionRequest) returns (Transaction);    
 }
 
@@ -44,7 +44,7 @@ message GetTransactionByIDRequest{
     int32 id =1;
 }
 
-message GetTransactoinByIDResponse{
+message GetTransactionByIDResponse{
     Transaction transaction = 1;
 }
 
@@ -52,7 +52,7 @@ message GetTransactionByWalletIDRequest{
     int32 walletid =1;
 }
 
-message GetTransactoinByWalletIDResponse{
+message GetTransactionByWalletIDResponse{
     repeated TransactionByWalletID transactions = 1;
 }
 

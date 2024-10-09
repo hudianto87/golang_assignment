@@ -30,8 +30,8 @@ const (
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type TransactionServiceClient interface {
 	CreateTransaction(ctx context.Context, in *CreateTransactionRequest, opts ...grpc.CallOption) (*Transaction, error)
-	GetTransactionByID(ctx context.Context, in *GetTransactionByIDRequest, opts ...grpc.CallOption) (*GetTransactoinByIDResponse, error)
-	GetTransactionByWalletID(ctx context.Context, in *GetTransactionByWalletIDRequest, opts ...grpc.CallOption) (*GetTransactoinByWalletIDResponse, error)
+	GetTransactionByID(ctx context.Context, in *GetTransactionByIDRequest, opts ...grpc.CallOption) (*GetTransactionByIDResponse, error)
+	GetTransactionByWalletID(ctx context.Context, in *GetTransactionByWalletIDRequest, opts ...grpc.CallOption) (*GetTransactionByWalletIDResponse, error)
 	DeleteTransaction(ctx context.Context, in *DeleteTransactionRequest, opts ...grpc.CallOption) (*Transaction, error)
 }
 
@@ -53,9 +53,9 @@ func (c *transactionServiceClient) CreateTransaction(ctx context.Context, in *Cr
 	return out, nil
 }
 
-func (c *transactionServiceClient) GetTransactionByID(ctx context.Context, in *GetTransactionByIDRequest, opts ...grpc.CallOption) (*GetTransactoinByIDResponse, error) {
+func (c *transactionServiceClient) GetTransactionByID(ctx context.Context, in *GetTransactionByIDRequest, opts ...grpc.CallOption) (*GetTransactionByIDResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(GetTransactoinByIDResponse)
+	out := new(GetTransactionByIDResponse)
 	err := c.cc.Invoke(ctx, TransactionService_GetTransactionByID_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
@@ -63,9 +63,9 @@ func (c *transactionServiceClient) GetTransactionByID(ctx context.Context, in *G
 	return out, nil
 }
 
-func (c *transactionServiceClient) GetTransactionByWalletID(ctx context.Context, in *GetTransactionByWalletIDRequest, opts ...grpc.CallOption) (*GetTransactoinByWalletIDResponse, error) {
+func (c *transactionServiceClient) GetTransactionByWalletID(ctx context.Context, in *GetTransactionByWalletIDRequest, opts ...grpc.CallOption) (*GetTransactionByWalletIDResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(GetTransactoinByWalletIDResponse)
+	out := new(GetTransactionByWalletIDResponse)
 	err := c.cc.Invoke(ctx, TransactionService_GetTransactionByWalletID_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
@@ -88,8 +88,8 @@ func (c *transactionServiceClient) DeleteTransaction(ctx context.Context, in *De
 // for forward compatibility.
 type TransactionServiceServer interface {
 	CreateTransaction(context.Context, *CreateTransactionRequest) (*Transaction, error)
-	GetTransactionByID(context.Context, *GetTransactionByIDRequest) (*GetTransactoinByIDResponse, error)
-	GetTransactionByWalletID(context.Context, *GetTransactionByWalletIDRequest) (*GetTransactoinByWalletIDResponse, error)
+	GetTransactionByID(context.Context, *GetTransactionByIDRequest) (*GetTransactionByIDResponse, error)
+	GetTransactionByWalletID(context.Context, *GetTransactionByWalletIDRequest) (*GetTransactionByWalletIDResponse, error)
 	DeleteTransaction(context.Context, *DeleteTransactionRequest) (*Transaction, error)
 	mustEmbedUnimplementedTransactionServiceServer()
 }
@@ -104,10 +104,10 @@ type UnimplementedTransactionServiceServer struct{}
 func (UnimplementedTransactionServiceServer) CreateTransaction(context.Context, *CreateTransactionRequest) (*Transaction, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreateTransaction not implemented")
 }
-func (UnimplementedTransactionServiceServer) GetTransactionByID(context.Context, *GetTransactionByIDRequest) (*GetTransactoinByIDResponse, error) {
+func (UnimplementedTransactionServiceServer) GetTransactionByID(context.Context, *GetTransactionByIDRequest) (*GetTransactionByIDResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetTransactionByID not implemented")
 }
-func (UnimplementedTransactionServiceServer) GetTransactionByWalletID(context.Context, *GetTransactionByWalletIDRequest) (*GetTransactoinByWalletIDResponse, error) {
+func (UnimplementedTransactionServiceServer) GetTransactionByWalletID(context.Context, *GetTransactionByWalletIDRequest) (*GetTransactionByWalletIDResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetTransactionByWalletID not implemented")
 }
 func (UnimplementedTransactionServiceServer) DeleteTransaction(context.Context, *DeleteTransactionRequest) (*Transaction, error) {

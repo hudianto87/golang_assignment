@@ -87,6 +87,7 @@ func (r *transactionService) DeleteTransaction(ctx context.Context, id int) erro
 }
 
 func (r *transactionService) UpdateWalletBalance(ctx context.Context, id int, amount float32, trxType string) error {
+
 	err := r.transactionRepo.UpdateWalletBalance(ctx, id, amount, trxType)
 	if err != nil {
 		return fmt.Errorf("error transaction not found: %v", err)

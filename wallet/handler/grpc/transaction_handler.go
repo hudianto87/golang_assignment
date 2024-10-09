@@ -32,7 +32,7 @@ func NewTransactionHandler(tranasctioinService service.ITransactionService) *Tra
 }
 
 func (h *TransactionHandler) CreateTransaction(ctx context.Context, req *pb.CreateTransactionRequest) (*pb.MutationTransactionResponse, error) {
-	//log.Printf("Received CreateTransactionRequest: WalletID: %d, TrxType: %s, Description: %s", req.Walletid, req.Trxtype, req.Description)
+	log.Printf("Received CreateTransactionRequest: WalletID: %d, TrxType: %s, Description: %s", req.Walletid, req.Trxtype, req.Description)
 	createdTransaction, err := h.transactionService.CreateTransaction(ctx, &entity.Transaction{
 		WalletID:       int(req.Walletid),
 		TrxType:        req.Trxtype,
@@ -104,6 +104,7 @@ func (h *TransactionHandler) GetTransactionByWalletID(ctx context.Context, req *
 }
 
 func (h *TransactionHandler) DeleteTransaction(ctx context.Context, req *pb.DeleteTransactionRequest) (*pb.MutationTransactionResponse, error) {
+
 	if err := h.transactionService.DeleteTransaction(ctx, int(req.Idtrx)); err != nil {
 		log.Println(err)
 		return nil, err

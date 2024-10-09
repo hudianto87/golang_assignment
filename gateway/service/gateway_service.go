@@ -4,9 +4,7 @@ import (
 	"context"
 	"fmt"
 	"golangassignment/gateway/entity"
-	transaction_Service "golangassignment/gateway/proto/gateway_service/v1"
-	user_Service "golangassignment/gateway/proto/gateway_service/v1"
-	wallet_Service "golangassignment/gateway/proto/gateway_service/v1"
+	v1 "golangassignment/gateway/proto/gateway_service/v1"
 
 	"google.golang.org/protobuf/types/known/emptypb"
 )
@@ -31,12 +29,12 @@ type IGatewayService interface {
 }
 
 type gatewayService struct {
-	userService        user_Service.UserServiceClient
-	walletService      wallet_Service.WalletServiceClient
-	transactionService transaction_Service.TransactionServiceClient
+	userService        v1.UserServiceClient
+	walletService      v1.WalletServiceClient
+	transactionService v1.TransactionServiceClient
 }
 
-func NewGatewayService(user_Service user_Service.UserServiceClient, wallet_Service wallet_Service.WalletServiceClient, transaction_Service transaction_Service.TransactionServiceClient) IGatewayService {
+func NewGatewayService(user_Service v1.UserServiceClient, wallet_Service v1.WalletServiceClient, transaction_Service v1.TransactionServiceClient) IGatewayService {
 	return &gatewayService{
 		userService:        user_Service,
 		walletService:      wallet_Service,
@@ -45,7 +43,7 @@ func NewGatewayService(user_Service user_Service.UserServiceClient, wallet_Servi
 }
 
 func (g *gatewayService) CreateUser(ctx context.Context, user *entity.User) (entity.User, error) {
-	req := &user_Service.CreateUserRequest{
+	req := &v1.CreateUserRequest{
 		Name:    user.Name,
 		Email:   user.Email,
 		Address: user.Address,
@@ -63,7 +61,7 @@ func (g *gatewayService) CreateUser(ctx context.Context, user *entity.User) (ent
 }
 
 func (g *gatewayService) GetUserByID(ctx context.Context, id int) (entity.User, error) {
-	req := &user_Service.GetUserByIDRequest{Id: int32(id)}
+	req := &v1.GetUserByIDRequest{Id: int32(id)}
 	res, err := g.userService.GetUserByID(ctx, req)
 	if err != nil {
 		return entity.User{}, fmt.Errorf("failed to get user by ID: %v", err)
@@ -79,7 +77,7 @@ func (g *gatewayService) GetUserByID(ctx context.Context, id int) (entity.User, 
 }
 
 func (g *gatewayService) UpdateUser(ctx context.Context, id int, user entity.User) (entity.User, error) {
-	req := &user_Service.UpdateUserRequest{
+	req := &v1.UpdateUserRequest{
 		Id:      int32(id),
 		Name:    user.Name,
 		Email:   user.Email,
@@ -99,7 +97,7 @@ func (g *gatewayService) UpdateUser(ctx context.Context, id int, user entity.Use
 }
 
 func (g *gatewayService) DeleteUser(ctx context.Context, id int) error {
-	req := &user_Service.DeleteUserRequest{
+	req := &v1.DeleteUserRequest{
 		Id: int32(id),
 	}
 
@@ -134,7 +132,7 @@ func (g *gatewayService) GetAllUsers(ctx context.Context) ([]entity.User, error)
 }
 
 func (g *gatewayService) CreateWallet(ctx context.Context, wallet *entity.Wallet) (entity.Wallet, error) {
-	req := &wallet_Service.CreateWalletRequest{
+	req := &v1.CreateWalletRequest{
 		Name:        wallet.Name,
 		UserId:      wallet.UserID,
 		Balance:     wallet.Balance,
@@ -154,7 +152,7 @@ func (g *gatewayService) CreateWallet(ctx context.Context, wallet *entity.Wallet
 }
 
 func (g *gatewayService) GetWalletByID(ctx context.Context, id int) (entity.Wallet, error) {
-	req := &wallet_Service.GetWalletByIDRequest{Id: int32(id)}
+	req := &v1.GetWalletByIDRequest{Id: int32(id)}
 	res, err := g.walletService.GetWalletByID(ctx, req)
 	if err != nil {
 		return entity.Wallet{}, fmt.Errorf("failed to get wallet by ID: %v", err)
@@ -171,7 +169,7 @@ func (g *gatewayService) GetWalletByID(ctx context.Context, id int) (entity.Wall
 }
 
 func (g *gatewayService) UpdateWallet(ctx context.Context, id int, wallet entity.Wallet) (entity.Wallet, error) {
-	req := &wallet_Service.UpdateWalletRequest{
+	req := &v1.UpdateWalletRequest{
 		Id:          int32(id),
 		Name:        wallet.Name,
 		UserId:      wallet.UserID,
@@ -195,7 +193,7 @@ func (g *gatewayService) UpdateWallet(ctx context.Context, id int, wallet entity
 }
 
 func (g *gatewayService) DeleteWallet(ctx context.Context, id int) error {
-	req := &wallet_Service.DeleteWalletRequest{
+	req := &v1.DeleteWalletRequest{
 		Id: int32(id),
 	}
 
@@ -231,7 +229,7 @@ func (g *gatewayService) GetAllWallets(ctx context.Context) ([]entity.Wallet, er
 }
 
 func (g *gatewayService) GetTransactionByWalletID(ctx context.Context, walletID int) ([]entity.TransactionResponse, error) {
-	req := &transaction_Service.GetTransactionByWalletIDRequest{Walletid: int32(walletID)}
+	req := &v1.GetTransactionByWalletIDRequest{Walletid: int32(walletID)}
 	res, err := g.transactionService.GetTransactionByWalletID(ctx, req)
 	if err != nil {
 		return nil, fmt.Errorf("failed to get transactions by wallet ID: %v", err)
@@ -255,7 +253,8 @@ func (g *gatewayService) GetTransactionByWalletID(ctx context.Context, walletID 
 }
 
 func (g *gatewayService) CreateTransaction(ctx context.Context, transaction *entity.Transaction) (entity.Transaction, error) {
-	req := &transaction_Service.CreateTransactionRequest{
+
+	req := &v1.CreateTransactionRequest{
 		Walletid:       int32(transaction.WalletID),
 		Trxtype:        transaction.TrxType,
 		Walletsourceid: int32(transaction.WalletSourceID),
@@ -280,7 +279,7 @@ func (g *gatewayService) CreateTransaction(ctx context.Context, transaction *ent
 }
 
 func (g *gatewayService) GetTransactionByID(ctx context.Context, id int) (entity.Transaction, error) {
-	req := &transaction_Service.GetTransactionByIDRequest{Id: int32(id)}
+	req := &v1.GetTransactionByIDRequest{Id: int32(id)}
 	res, err := g.transactionService.GetTransactionByID(ctx, req)
 	if err != nil {
 		return entity.Transaction{}, fmt.Errorf("failed to get transaction by ID: %v", err)
@@ -299,7 +298,8 @@ func (g *gatewayService) GetTransactionByID(ctx context.Context, id int) (entity
 }
 
 func (g *gatewayService) DeleteTransaction(ctx context.Context, id int) error {
-	req := &transaction_Service.DeleteTransactionRequest{Idtrx: int32(id)}
+	req := &v1.DeleteTransactionRequest{Idtrx: int32(id)}
+
 	_, err := g.transactionService.DeleteTransaction(ctx, req)
 	if err != nil {
 		return fmt.Errorf("failed to delete transaction: %v", err)

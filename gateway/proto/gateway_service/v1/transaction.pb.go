@@ -329,7 +329,7 @@ func (x *GetTransactionByIDRequest) GetId() int32 {
 	return 0
 }
 
-type GetTransactoinByIDResponse struct {
+type GetTransactionByIDResponse struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
@@ -337,8 +337,8 @@ type GetTransactoinByIDResponse struct {
 	Transaction *Transaction `protobuf:"bytes,1,opt,name=transaction,proto3" json:"transaction,omitempty"`
 }
 
-func (x *GetTransactoinByIDResponse) Reset() {
-	*x = GetTransactoinByIDResponse{}
+func (x *GetTransactionByIDResponse) Reset() {
+	*x = GetTransactionByIDResponse{}
 	if protoimpl.UnsafeEnabled {
 		mi := &file_proto_gateway_service_v1_transaction_proto_msgTypes[4]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -346,13 +346,13 @@ func (x *GetTransactoinByIDResponse) Reset() {
 	}
 }
 
-func (x *GetTransactoinByIDResponse) String() string {
+func (x *GetTransactionByIDResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*GetTransactoinByIDResponse) ProtoMessage() {}
+func (*GetTransactionByIDResponse) ProtoMessage() {}
 
-func (x *GetTransactoinByIDResponse) ProtoReflect() protoreflect.Message {
+func (x *GetTransactionByIDResponse) ProtoReflect() protoreflect.Message {
 	mi := &file_proto_gateway_service_v1_transaction_proto_msgTypes[4]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -364,12 +364,12 @@ func (x *GetTransactoinByIDResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use GetTransactoinByIDResponse.ProtoReflect.Descriptor instead.
-func (*GetTransactoinByIDResponse) Descriptor() ([]byte, []int) {
+// Deprecated: Use GetTransactionByIDResponse.ProtoReflect.Descriptor instead.
+func (*GetTransactionByIDResponse) Descriptor() ([]byte, []int) {
 	return file_proto_gateway_service_v1_transaction_proto_rawDescGZIP(), []int{4}
 }
 
-func (x *GetTransactoinByIDResponse) GetTransaction() *Transaction {
+func (x *GetTransactionByIDResponse) GetTransaction() *Transaction {
 	if x != nil {
 		return x.Transaction
 	}
@@ -423,7 +423,7 @@ func (x *GetTransactionByWalletIDRequest) GetWalletid() int32 {
 	return 0
 }
 
-type GetTransactoinByWalletIDResponse struct {
+type GetTransactionByWalletIDResponse struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
@@ -431,8 +431,8 @@ type GetTransactoinByWalletIDResponse struct {
 	Transactions []*TransactionByWalletID `protobuf:"bytes,1,rep,name=transactions,proto3" json:"transactions,omitempty"`
 }
 
-func (x *GetTransactoinByWalletIDResponse) Reset() {
-	*x = GetTransactoinByWalletIDResponse{}
+func (x *GetTransactionByWalletIDResponse) Reset() {
+	*x = GetTransactionByWalletIDResponse{}
 	if protoimpl.UnsafeEnabled {
 		mi := &file_proto_gateway_service_v1_transaction_proto_msgTypes[6]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -440,13 +440,13 @@ func (x *GetTransactoinByWalletIDResponse) Reset() {
 	}
 }
 
-func (x *GetTransactoinByWalletIDResponse) String() string {
+func (x *GetTransactionByWalletIDResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*GetTransactoinByWalletIDResponse) ProtoMessage() {}
+func (*GetTransactionByWalletIDResponse) ProtoMessage() {}
 
-func (x *GetTransactoinByWalletIDResponse) ProtoReflect() protoreflect.Message {
+func (x *GetTransactionByWalletIDResponse) ProtoReflect() protoreflect.Message {
 	mi := &file_proto_gateway_service_v1_transaction_proto_msgTypes[6]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -458,12 +458,12 @@ func (x *GetTransactoinByWalletIDResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use GetTransactoinByWalletIDResponse.ProtoReflect.Descriptor instead.
-func (*GetTransactoinByWalletIDResponse) Descriptor() ([]byte, []int) {
+// Deprecated: Use GetTransactionByWalletIDResponse.ProtoReflect.Descriptor instead.
+func (*GetTransactionByWalletIDResponse) Descriptor() ([]byte, []int) {
 	return file_proto_gateway_service_v1_transaction_proto_rawDescGZIP(), []int{6}
 }
 
-func (x *GetTransactoinByWalletIDResponse) GetTransactions() []*TransactionByWalletID {
+func (x *GetTransactionByWalletIDResponse) GetTransactions() []*TransactionByWalletID {
 	if x != nil {
 		return x.Transactions
 	}
@@ -701,7 +701,7 @@ var file_proto_gateway_service_v1_transaction_proto_rawDesc = []byte{
 	0x6e, 0x73, 0x22, 0x2b, 0x0a, 0x19, 0x47, 0x65, 0x74, 0x54, 0x72, 0x61, 0x6e, 0x73, 0x61, 0x63,
 	0x74, 0x69, 0x6f, 0x6e, 0x42, 0x79, 0x49, 0x44, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12,
 	0x0e, 0x0a, 0x02, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x05, 0x52, 0x02, 0x69, 0x64, 0x22,
-	0x64, 0x0a, 0x1a, 0x47, 0x65, 0x74, 0x54, 0x72, 0x61, 0x6e, 0x73, 0x61, 0x63, 0x74, 0x6f, 0x69,
+	0x64, 0x0a, 0x1a, 0x47, 0x65, 0x74, 0x54, 0x72, 0x61, 0x6e, 0x73, 0x61, 0x63, 0x74, 0x69, 0x6f,
 	0x6e, 0x42, 0x79, 0x49, 0x44, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x46, 0x0a,
 	0x0b, 0x74, 0x72, 0x61, 0x6e, 0x73, 0x61, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x18, 0x01, 0x20, 0x01,
 	0x28, 0x0b, 0x32, 0x24, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2e, 0x77, 0x61, 0x6c, 0x6c, 0x65,
@@ -712,7 +712,7 @@ var file_proto_gateway_service_v1_transaction_proto_rawDesc = []byte{
 	0x44, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x1a, 0x0a, 0x08, 0x77, 0x61, 0x6c, 0x6c,
 	0x65, 0x74, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x05, 0x52, 0x08, 0x77, 0x61, 0x6c, 0x6c,
 	0x65, 0x74, 0x69, 0x64, 0x22, 0x76, 0x0a, 0x20, 0x47, 0x65, 0x74, 0x54, 0x72, 0x61, 0x6e, 0x73,
-	0x61, 0x63, 0x74, 0x6f, 0x69, 0x6e, 0x42, 0x79, 0x57, 0x61, 0x6c, 0x6c, 0x65, 0x74, 0x49, 0x44,
+	0x61, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x42, 0x79, 0x57, 0x61, 0x6c, 0x6c, 0x65, 0x74, 0x49, 0x44,
 	0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x52, 0x0a, 0x0c, 0x74, 0x72, 0x61, 0x6e,
 	0x73, 0x61, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x73, 0x18, 0x01, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x2e,
 	0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2e, 0x77, 0x61, 0x6c, 0x6c, 0x65, 0x74, 0x5f, 0x73, 0x65,
@@ -752,7 +752,7 @@ var file_proto_gateway_service_v1_transaction_proto_rawDesc = []byte{
 	0x42, 0x79, 0x49, 0x44, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x33, 0x2e, 0x70, 0x72,
 	0x6f, 0x74, 0x6f, 0x2e, 0x77, 0x61, 0x6c, 0x6c, 0x65, 0x74, 0x5f, 0x73, 0x65, 0x72, 0x76, 0x69,
 	0x63, 0x65, 0x2e, 0x76, 0x31, 0x2e, 0x47, 0x65, 0x74, 0x54, 0x72, 0x61, 0x6e, 0x73, 0x61, 0x63,
-	0x74, 0x6f, 0x69, 0x6e, 0x42, 0x79, 0x49, 0x44, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65,
+	0x74, 0x69, 0x6f, 0x6e, 0x42, 0x79, 0x49, 0x44, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65,
 	0x12, 0x8f, 0x01, 0x0a, 0x18, 0x47, 0x65, 0x74, 0x54, 0x72, 0x61, 0x6e, 0x73, 0x61, 0x63, 0x74,
 	0x69, 0x6f, 0x6e, 0x42, 0x79, 0x57, 0x61, 0x6c, 0x6c, 0x65, 0x74, 0x49, 0x44, 0x12, 0x38, 0x2e,
 	0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2e, 0x77, 0x61, 0x6c, 0x6c, 0x65, 0x74, 0x5f, 0x73, 0x65, 0x72,
@@ -760,7 +760,7 @@ var file_proto_gateway_service_v1_transaction_proto_rawDesc = []byte{
 	0x61, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x42, 0x79, 0x57, 0x61, 0x6c, 0x6c, 0x65, 0x74, 0x49, 0x44,
 	0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x39, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2e,
 	0x77, 0x61, 0x6c, 0x6c, 0x65, 0x74, 0x5f, 0x73, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x76,
-	0x31, 0x2e, 0x47, 0x65, 0x74, 0x54, 0x72, 0x61, 0x6e, 0x73, 0x61, 0x63, 0x74, 0x6f, 0x69, 0x6e,
+	0x31, 0x2e, 0x47, 0x65, 0x74, 0x54, 0x72, 0x61, 0x6e, 0x73, 0x61, 0x63, 0x74, 0x69, 0x6f, 0x6e,
 	0x42, 0x79, 0x57, 0x61, 0x6c, 0x6c, 0x65, 0x74, 0x49, 0x44, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e,
 	0x73, 0x65, 0x12, 0x6c, 0x0a, 0x11, 0x44, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x54, 0x72, 0x61, 0x6e,
 	0x73, 0x61, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x12, 0x31, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2e,
@@ -793,9 +793,9 @@ var file_proto_gateway_service_v1_transaction_proto_goTypes = []any{
 	(*TransactionByWalletID)(nil),            // 1: proto.wallet_service.v1.TransactionByWalletID
 	(*GetTransactionResponse)(nil),           // 2: proto.wallet_service.v1.GetTransactionResponse
 	(*GetTransactionByIDRequest)(nil),        // 3: proto.wallet_service.v1.GetTransactionByIDRequest
-	(*GetTransactoinByIDResponse)(nil),       // 4: proto.wallet_service.v1.GetTransactoinByIDResponse
+	(*GetTransactionByIDResponse)(nil),       // 4: proto.wallet_service.v1.GetTransactionByIDResponse
 	(*GetTransactionByWalletIDRequest)(nil),  // 5: proto.wallet_service.v1.GetTransactionByWalletIDRequest
-	(*GetTransactoinByWalletIDResponse)(nil), // 6: proto.wallet_service.v1.GetTransactoinByWalletIDResponse
+	(*GetTransactionByWalletIDResponse)(nil), // 6: proto.wallet_service.v1.GetTransactionByWalletIDResponse
 	(*DeleteTransactionRequest)(nil),         // 7: proto.wallet_service.v1.DeleteTransactionRequest
 	(*CreateTransactionRequest)(nil),         // 8: proto.wallet_service.v1.CreateTransactionRequest
 	(*MutationTransactionResponse)(nil),      // 9: proto.wallet_service.v1.MutationTransactionResponse
@@ -807,15 +807,15 @@ var file_proto_gateway_service_v1_transaction_proto_depIdxs = []int32{
 	10, // 2: proto.wallet_service.v1.TransactionByWalletID.Created_at:type_name -> google.protobuf.Timestamp
 	10, // 3: proto.wallet_service.v1.TransactionByWalletID.Updated_at:type_name -> google.protobuf.Timestamp
 	0,  // 4: proto.wallet_service.v1.GetTransactionResponse.transactions:type_name -> proto.wallet_service.v1.Transaction
-	0,  // 5: proto.wallet_service.v1.GetTransactoinByIDResponse.transaction:type_name -> proto.wallet_service.v1.Transaction
-	1,  // 6: proto.wallet_service.v1.GetTransactoinByWalletIDResponse.transactions:type_name -> proto.wallet_service.v1.TransactionByWalletID
+	0,  // 5: proto.wallet_service.v1.GetTransactionByIDResponse.transaction:type_name -> proto.wallet_service.v1.Transaction
+	1,  // 6: proto.wallet_service.v1.GetTransactionByWalletIDResponse.transactions:type_name -> proto.wallet_service.v1.TransactionByWalletID
 	8,  // 7: proto.wallet_service.v1.TransactionService.CreateTransaction:input_type -> proto.wallet_service.v1.CreateTransactionRequest
 	3,  // 8: proto.wallet_service.v1.TransactionService.GetTransactionByID:input_type -> proto.wallet_service.v1.GetTransactionByIDRequest
 	5,  // 9: proto.wallet_service.v1.TransactionService.GetTransactionByWalletID:input_type -> proto.wallet_service.v1.GetTransactionByWalletIDRequest
 	7,  // 10: proto.wallet_service.v1.TransactionService.DeleteTransaction:input_type -> proto.wallet_service.v1.DeleteTransactionRequest
 	0,  // 11: proto.wallet_service.v1.TransactionService.CreateTransaction:output_type -> proto.wallet_service.v1.Transaction
-	4,  // 12: proto.wallet_service.v1.TransactionService.GetTransactionByID:output_type -> proto.wallet_service.v1.GetTransactoinByIDResponse
-	6,  // 13: proto.wallet_service.v1.TransactionService.GetTransactionByWalletID:output_type -> proto.wallet_service.v1.GetTransactoinByWalletIDResponse
+	4,  // 12: proto.wallet_service.v1.TransactionService.GetTransactionByID:output_type -> proto.wallet_service.v1.GetTransactionByIDResponse
+	6,  // 13: proto.wallet_service.v1.TransactionService.GetTransactionByWalletID:output_type -> proto.wallet_service.v1.GetTransactionByWalletIDResponse
 	0,  // 14: proto.wallet_service.v1.TransactionService.DeleteTransaction:output_type -> proto.wallet_service.v1.Transaction
 	11, // [11:15] is the sub-list for method output_type
 	7,  // [7:11] is the sub-list for method input_type
@@ -879,7 +879,7 @@ func file_proto_gateway_service_v1_transaction_proto_init() {
 			}
 		}
 		file_proto_gateway_service_v1_transaction_proto_msgTypes[4].Exporter = func(v any, i int) any {
-			switch v := v.(*GetTransactoinByIDResponse); i {
+			switch v := v.(*GetTransactionByIDResponse); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -903,7 +903,7 @@ func file_proto_gateway_service_v1_transaction_proto_init() {
 			}
 		}
 		file_proto_gateway_service_v1_transaction_proto_msgTypes[6].Exporter = func(v any, i int) any {
-			switch v := v.(*GetTransactoinByWalletIDResponse); i {
+			switch v := v.(*GetTransactionByWalletIDResponse); i {
 			case 0:
 				return &v.state
 			case 1:
