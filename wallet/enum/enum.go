@@ -1,0 +1,9 @@
+package enum
+
+const (
+	PAYMENT     = "PAYMENT"
+	TOPUP       = "TOPUP"
+	TRANSFER    = "TRANSFER"
+	TRANSFERIN  = "TRANSFERIN"
+	TRANSFEROUT = "TRANSFEROUT"
+)

@@ -1,0 +1,61 @@
+syntax ="proto3";
+
+option go_package="golangassignment/proto/wallet_service/v1";
+
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/empty.proto";
+
+package proto.wallet_service.v1;
+
+service WalletService{
+    rpc GetWallets(google.protobuf.Empty) returns (GetWalletResponse);
+    rpc GetWalletByID(GetWalletByIDRequest) returns (GetWalletByIDResponse);
+    rpc CreateWallet(CreateWalletRequest) returns (MutationResponse);
+    rpc UpdateWallet(UpdateWalletRequest) returns (MutationResponse);
+    rpc DeleteWallet(DeleteRequest) returns (MutationResponse);    
+}
+
+message Wallet{
+    int32 id = 1;
+    string name = 2;
+    string user_id = 3;
+    string description = 4;
+    float balance = 5;    
+    google.protobuf.Timestamp created_at = 6;
+    google.protobuf.Timestamp updated_at = 7;
+}
+
+message GetWalletResponse{
+    repeated Wallet wallets = 1;
+}
+
+message GetWalletByIDRequest{
+    int32 id =1;
+}
+
+message GetWalletByIDResponse{
+    Wallet wallet = 1;
+}
+
+message UpdateWalletRequest{
+    int32 id = 1;
+    string name = 2;
+    string user_id = 3;
+    string description = 4;
+    float balance = 5;    
+}
+
+message DeleteRequest{
+    int32 id = 1;    
+}
+
+message CreateWalletRequest{    
+    string name = 1;
+    string user_id = 2;
+    string description = 3;    
+    float balance = 4;    
+}
+
+message MutationResponse{
+    string message = 1;
+}
