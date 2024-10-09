@@ -14,16 +14,22 @@ import (
 
 func main() {
 	// Use grpc.NewClient to create a new gRPC connection
-	conn, err := grpc.NewClient("localhost:50051", grpc.WithTransportCredentials(insecure.NewCredentials()))
+	connU, err := grpc.NewClient("localhost:50051", grpc.WithTransportCredentials(insecure.NewCredentials()))
 	if err != nil {
 		log.Fatalln("Failed to create gRPC client:", err)
 	}
-	defer conn.Close()
+	defer connU.Close()
+
+	connWT, err := grpc.NewClient("localhost:50052", grpc.WithTransportCredentials(insecure.NewCredentials()))
+	if err != nil {
+		log.Fatalln("Failed to create gRPC client:", err)
+	}
+	defer connWT.Close()
 
 	// Create gRPC service clients
-	userServiceClient := pb.NewUserServiceClient(conn)
-	walletServiceClient := pb.NewWalletServiceClient(conn)
-	transactionServiceClient := pb.NewTransactionServiceClient(conn)
+	userServiceClient := pb.NewUserServiceClient(connU)
+	walletServiceClient := pb.NewWalletServiceClient(connWT)
+	transactionServiceClient := pb.NewTransactionServiceClient(connWT)
 
 	// Initialize the Gateway Service with gRPC clients
 	gatewayService := service.NewGatewayService(userServiceClient, walletServiceClient, transactionServiceClient)
