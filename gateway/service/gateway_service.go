@@ -69,10 +69,12 @@ func (g *gatewayService) GetUserByID(ctx context.Context, id int) (entity.User, 
 		return entity.User{}, fmt.Errorf("failed to get user by ID: %v", err)
 	}
 	return entity.User{
-		ID:      int(res.User.Id),
-		Name:    res.User.Name,
-		Email:   res.User.Email,
-		Address: res.User.Address,
+		ID:        int(res.User.Id),
+		Name:      res.User.Name,
+		Email:     res.User.Email,
+		Address:   res.User.Address,
+		CreatedAt: res.User.CreatedAt.AsTime(),
+		UpdatedAt: res.User.UpdatedAt.AsTime(),
 	}, nil
 }
 
